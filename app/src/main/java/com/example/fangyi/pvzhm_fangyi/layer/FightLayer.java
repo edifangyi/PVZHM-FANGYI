@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import com.example.fangyi.pvzhm_fangyi.bean.ShowPlant;
 import com.example.fangyi.pvzhm_fangyi.bean.ShowZombies;
 import com.example.fangyi.pvzhm_fangyi.utils.CommonUtils;
+import com.socks.library.KLog;
 
 import org.cocos2d.actions.instant.CCCallFunc;
 import org.cocos2d.actions.interval.CCDelayTime;
@@ -33,12 +34,14 @@ public class FightLayer extends BaseLayer {
     private List<ShowPlant> showPlatns; // 展示用的植物的集合
     private List<ShowPlant> selectPlants = new CopyOnWriteArrayList<>();// 已经选中植物的集合
     boolean isLock;
+    private boolean isDel;//是否删除了选中的植物
 
     public FightLayer() {
         init();
     }
 
     private void init() {
+        KLog.e(" ====================" + isLock + " ====================");
         loadMap();
         parserMap();
         showZombies();
@@ -116,6 +119,7 @@ public class FightLayer extends BaseLayer {
     //解锁
     public void unlock() {
         isLock = false;
+        setIsTouchEnabled(true);
     }
 
 
@@ -126,15 +130,28 @@ public class FightLayer extends BaseLayer {
         CGRect boundingBox = choose.getBoundingBox();
         CGRect choseBox = chose.getBoundingBox();
 
+
         // 玩家有可能反选植物
         if (CGRect.containsPoint(choseBox, point)) {
+
+            isDel = false;
             for (ShowPlant plant : selectPlants) {
                 CGRect selectPlantBox = plant.getShowSprite().getBoundingBox();
+
                 if (CGRect.containsPoint(selectPlantBox, point)) {
                     CCMoveTo moveTo = CCMoveTo.action(1, plant.getBgSprite().getPosition());
                     plant.getShowSprite().runAction(moveTo);
-                    selectPlants.remove(plant);//移除已经选中的植物
+                    selectPlants.remove(plant);//走到这一步，确实代表反选植物了
+                    isDel = true;
+                    continue;//跳出本次循环，继续下次循环
                 }
+                if (isDel) {
+                    setIsTouchEnabled(false);
+                    CCMoveBy ccMoveBy = CCMoveBy.action(0.5f, ccp(-53, 0));
+                    CCSequence sequence = CCSequence.actions(ccMoveBy, CCCallFunc.action(this, "unlock"));//移动完成解锁
+                    plant.getShowSprite().runAction(sequence);
+                }
+
             }
 
         } else if (CGRect.containsPoint(boundingBox, point)) {
