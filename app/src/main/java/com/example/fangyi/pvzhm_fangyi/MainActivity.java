@@ -9,6 +9,9 @@ import org.cocos2d.layers.CCScene;
 import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.opengl.CCGLSurfaceView;
 
+/**
+ * Created by FANGYI on 2016/8/4.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private CCDirector ccDirector;

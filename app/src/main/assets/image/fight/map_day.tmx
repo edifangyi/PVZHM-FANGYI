@@ -2,303 +2,78 @@
 <map version="1.0" orientation="orthogonal" width="14" height="6" tilewidth="46" tileheight="54">
  <tileset firstgid="1" name="bk1" tilewidth="46" tileheight="54">
   <image source="bk1.jpg" width="678" height="331"/>
-  <tile id="15">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="16">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="17">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="18">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="19">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="20">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="21">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="22">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="23">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="29">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="30">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="31">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="32">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="33">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="34">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="35">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="36">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="37">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="43">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="44">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="45">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="46">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="47">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="48">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="49">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="50">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="51">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="57">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="58">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="59">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="60">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="61">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="62">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="63">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="64">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="65">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="71">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="72">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="73">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="74">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="75">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="76">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="77">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="78">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
-  <tile id="79">
-   <properties>
-    <property name="isBuild" value="1"/>
-   </properties>
-  </tile>
  </tileset>
  <layer name="block" width="14" height="6">
   <data encoding="base64" compression="zlib">
    eJwNw4lSQQEAAMAXEZWEpKjooEShkhJdEkmS+v9vaXdml4IgCBl22YhRV4wZd9U11024YdJNU6bNuGXWbXPuuGvegnvue2DRkoceeeyJZSueembVc2vWvfDShk1bXnntjW1v7XjnvV0f7Nn30SefffHVgW8OfXfk2A8nfjr1y5nfzv1x4a9//gNAug3z
   </data>
  </layer>
- <objectgroup name="road" width="14" height="6">
-  <object x="473" y="84"/>
-  <object x="23" y="80"/>
-  <object x="473" y="137"/>
-  <object x="23" y="134"/>
-  <object x="473" y="193"/>
-  <object x="24" y="190"/>
-  <object x="473" y="239"/>
-  <object x="23" y="240"/>
-  <object x="474" y="297"/>
-  <object x="21" y="294"/>
+ <objectgroup name="road" width="14" height="6" visible="0">
+  <object x="473" y="96"/>
+  <object x="23" y="93"/>
+  <object x="474" y="148"/>
+  <object x="24" y="142"/>
+  <object x="473" y="205"/>
+  <object x="25" y="201"/>
+  <object x="472" y="251"/>
+  <object x="24" y="250"/>
+  <object x="474" y="306"/>
+  <object x="23" y="303"/>
  </objectgroup>
  <objectgroup name="tower01" width="14" height="6" visible="0">
-  <object x="84" y="83"/>
-  <object x="128" y="83"/>
-  <object x="171" y="83"/>
-  <object x="215" y="83"/>
-  <object x="257" y="83"/>
-  <object x="302" y="83"/>
-  <object x="346" y="83"/>
-  <object x="387" y="83"/>
-  <object x="433" y="83"/>
+  <object x="84" y="94"/>
+  <object x="128" y="94"/>
+  <object x="171" y="94"/>
+  <object x="215" y="94"/>
+  <object x="257" y="94"/>
+  <object x="302" y="94"/>
+  <object x="346" y="94"/>
+  <object x="387" y="94"/>
+  <object x="433" y="94"/>
  </objectgroup>
  <objectgroup name="tower02" width="14" height="6" visible="0">
-  <object x="84" y="132"/>
-  <object x="128" y="132"/>
-  <object x="171" y="132"/>
-  <object x="215" y="132"/>
-  <object x="257" y="132"/>
-  <object x="302" y="132"/>
-  <object x="346" y="132"/>
-  <object x="387" y="132"/>
-  <object x="433" y="132"/>
+  <object x="84" y="147"/>
+  <object x="128" y="147"/>
+  <object x="171" y="147"/>
+  <object x="215" y="147"/>
+  <object x="257" y="147"/>
+  <object x="302" y="147"/>
+  <object x="346" y="147"/>
+  <object x="387" y="147"/>
+  <object x="433" y="147"/>
  </objectgroup>
  <objectgroup name="tower03" width="14" height="6" visible="0">
-  <object x="84" y="191"/>
-  <object x="128" y="191"/>
-  <object x="171" y="191"/>
-  <object x="215" y="191"/>
-  <object x="257" y="191"/>
-  <object x="302" y="191"/>
-  <object x="346" y="191"/>
-  <object x="387" y="191"/>
-  <object x="433" y="191"/>
+  <object x="84" y="203"/>
+  <object x="128" y="203"/>
+  <object x="171" y="203"/>
+  <object x="215" y="203"/>
+  <object x="257" y="203"/>
+  <object x="302" y="203"/>
+  <object x="346" y="203"/>
+  <object x="387" y="203"/>
+  <object x="433" y="203"/>
  </objectgroup>
  <objectgroup name="tower04" width="14" height="6" visible="0">
-  <object x="84" y="238"/>
-  <object x="128" y="238"/>
-  <object x="171" y="238"/>
-  <object x="215" y="238"/>
-  <object x="257" y="238"/>
-  <object x="302" y="238"/>
-  <object x="346" y="238"/>
-  <object x="387" y="238"/>
-  <object x="433" y="238"/>
+  <object x="84" y="247"/>
+  <object x="128" y="247"/>
+  <object x="171" y="247"/>
+  <object x="215" y="247"/>
+  <object x="257" y="247"/>
+  <object x="302" y="247"/>
+  <object x="346" y="247"/>
+  <object x="387" y="247"/>
+  <object x="433" y="247"/>
  </objectgroup>
- <objectgroup name="tower05" width="14" height="6" visible="0">
-  <object x="84" y="294"/>
-  <object x="128" y="294"/>
-  <object x="171" y="294"/>
-  <object x="215" y="294"/>
-  <object x="257" y="294"/>
-  <object x="302" y="294"/>
-  <object x="346" y="294"/>
-  <object x="387" y="294"/>
-  <object x="433" y="294"/>
+ <objectgroup name="tower05" width="14" height="6">
+  <object x="83" y="304"/>
+  <object x="127" y="304"/>
+  <object x="170" y="304"/>
+  <object x="214" y="304"/>
+  <object x="256" y="304"/>
+  <object x="301" y="304"/>
+  <object x="345" y="304"/>
+  <object x="386" y="304"/>
+  <object x="432" y="304"/>
  </objectgroup>
  <objectgroup name="zombies" width="14" height="6" visible="0">
   <object x="529" y="85"/>
