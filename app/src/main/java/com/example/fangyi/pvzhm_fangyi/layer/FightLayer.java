@@ -4,15 +4,19 @@ import android.view.MotionEvent;
 
 import com.example.fangyi.pvzhm_fangyi.bean.ShowPlant;
 import com.example.fangyi.pvzhm_fangyi.bean.ShowZombies;
+import com.example.fangyi.pvzhm_fangyi.engine.GameCotroller;
 import com.example.fangyi.pvzhm_fangyi.utils.CommonUtils;
 import com.socks.library.KLog;
 
+import org.cocos2d.actions.base.CCAction;
 import org.cocos2d.actions.instant.CCCallFunc;
+import org.cocos2d.actions.interval.CCAnimate;
 import org.cocos2d.actions.interval.CCDelayTime;
 import org.cocos2d.actions.interval.CCMoveBy;
 import org.cocos2d.actions.interval.CCMoveTo;
 import org.cocos2d.actions.interval.CCSequence;
 import org.cocos2d.layers.CCTMXTiledMap;
+import org.cocos2d.nodes.CCDirector;
 import org.cocos2d.nodes.CCSprite;
 import org.cocos2d.types.CGPoint;
 import org.cocos2d.types.CGRect;
@@ -26,6 +30,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Created by FANGYI on 2016/8/4.
  */
 public class FightLayer extends BaseLayer {
+    public static final int TAG_CHOSE = 10;
 
     private CCTMXTiledMap map;
     private List<CGPoint> zombilesPoints;
@@ -35,6 +40,7 @@ public class FightLayer extends BaseLayer {
     private List<ShowPlant> selectPlants = new CopyOnWriteArrayList<>();// 已经选中植物的集合
     boolean isLock;
     private boolean isDel;//是否删除了选中的植物
+    private CCSprite start;
 
     public FightLayer() {
         init();
@@ -85,13 +91,20 @@ public class FightLayer extends BaseLayer {
         chose = CCSprite.sprite("image/fight/chose/fight_chose.png");
         chose.setAnchorPoint(0, 1);
         chose.setPosition(0, winSize.height);// 设置位置是屏幕的左上角
-        this.addChild(chose);
+        this.addChild(chose, 0, TAG_CHOSE);
 
         choose = CCSprite.sprite("image/fight/chose/fight_choose.png");
         choose.setAnchorPoint(0, 0);
         this.addChild(choose);
 
         loadShowPlant();
+
+        //加载一起来摇滚按钮
+        start = CCSprite.sprite("image/fight/chose/fight_start.png");
+        start.setPosition(choose.getContentSize().width / 2, 30);
+
+        choose.addChild(start);
+
     }
 
     // 加载展示用的植物
@@ -127,6 +140,13 @@ public class FightLayer extends BaseLayer {
     public boolean ccTouchesBegan(MotionEvent event) {
         // 需要把Android坐标系中的点 转换成Cocos2d坐标系中的点
         CGPoint point = this.convertTouchToNodeSpace(event);
+
+        if(GameCotroller.isStart){// 如果游戏开始了 交给GameCtoller 处理
+            GameCotroller.getInstance().handleTouch(point);
+
+            return super.ccTouchesBegan(event);
+        }
+
         CGRect boundingBox = choose.getBoundingBox();
         CGRect choseBox = chose.getBoundingBox();
 
@@ -155,7 +175,10 @@ public class FightLayer extends BaseLayer {
             }
 
         } else if (CGRect.containsPoint(boundingBox, point)) {
-            if (selectPlants.size() < 5 && !isLock) {  //如果已经选择满了 就不能再选择了，所选植物小于5，并且未上锁
+            if (CGRect.containsPoint(start.getBoundingBox(), point)) {
+                //点击了一起来摇滚
+                ready();
+            } else if (selectPlants.size() < 5 && !isLock) {  //如果已经选择满了 就不能再选择了，所选植物小于5，并且未上锁
                 // 有可能 选择植物
                 for (ShowPlant plant : showPlatns) {
                     CGRect boundingBox2 = plant.getShowSprite()
@@ -178,5 +201,55 @@ public class FightLayer extends BaseLayer {
         return super.ccTouchesBegan(event);
     }
 
+    /**
+     * 点击了一起来摇滚
+     */
+    private void ready() {
+        //缩小玩家已选容器
+        chose.setScale(0.65f);
+        //把选中的植物重新添加到 存在的容器上
+        for (ShowPlant plant : selectPlants) {
+            plant.getShowSprite().setScale(0.65f);// 因为父容器缩小了 孩子一起缩小
 
+            plant.getShowSprite().setPosition(
+                    plant.getShowSprite().getPosition().x * 0.65f,
+                    plant.getShowSprite().getPosition().y
+
+                            + (CCDirector.sharedDirector().getWinSize().height - plant
+
+                            .getShowSprite().getPosition().y)
+                            * 0.35f);// 设置坐标
+            this.addChild(plant.getShowSprite());
+        }
+
+        choose.removeSelf();//回收容器
+        //地图的平移
+        int x = (int) (map.getContentSize().width - winSize.width);
+        CCMoveBy moveBy = CCMoveBy.action(1, ccp(x, 0));
+        CCSequence sequence = CCSequence.actions(moveBy, CCCallFunc.action(this, "preGame"));
+
+        map.runAction(sequence);
+    }
+
+    private CCSprite ready;
+
+    /**
+     * 准备游戏
+     */
+    public void preGame() {
+        ready = CCSprite.sprite("image/fight/startready_01.png");
+        ready.setPosition(winSize.width / 2, winSize.height / 2);
+        this.addChild(ready);
+        String format = "image/fight/startready_%02d.png";
+        CCAction animate = CommonUtils.getAnimate(format, 3, false);
+        CCSequence sequence = CCSequence.actions((CCAnimate) animate, CCCallFunc.action(this, "startGame"));
+        ready.runAction(sequence);
+    }
+
+    public void startGame() {
+        ready.removeSelf();// 移除中间的序列帧
+        GameCotroller cotroller=GameCotroller.getInstance();
+        cotroller.startGame(map,selectPlants);
+
+    }
 }

@@ -25,10 +25,12 @@ public class ShowPlant {
 
         }
     }
+    private int id;
     //-----------------
     private CCSprite showSprite;
     private CCSprite bgSprite;
     public ShowPlant(int id){
+        this.id = id;
         HashMap<String, String> hashMap = db.get(id);
         String path = hashMap.get("path");
         showSprite = CCSprite.sprite(path);
@@ -38,6 +40,10 @@ public class ShowPlant {
         bgSprite.setOpacity(150);//设置半透明
         bgSprite.setAnchorPoint(0,0);
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     public CCSprite getBgSprite() {
