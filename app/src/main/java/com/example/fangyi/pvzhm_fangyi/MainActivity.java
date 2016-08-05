@@ -3,7 +3,7 @@ package com.example.fangyi.pvzhm_fangyi;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.fangyi.pvzhm_fangyi.layer.FightLayer;
+import com.example.fangyi.pvzhm_fangyi.layer.WelcomeLayer;
 
 import org.cocos2d.layers.CCScene;
 import org.cocos2d.nodes.CCDirector;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ccDirector.setScreenSize(480,320);//自动屏幕适配
 
         CCScene ccScene = CCScene.node();
-        ccScene.addChild(new FightLayer());
+        ccScene.addChild(new WelcomeLayer());
 
 
         ccDirector.runWithScene(ccScene);//运行场景
